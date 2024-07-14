@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://0jmv4y7hvrwr"]
+
+[ext_resource type="Script" path="res://scripts/dumb_enemy.gd" id="1_sna6n"]
+[ext_resource type="Texture2D" uid="uid://cmrftk5mus5s4" path="res://dumb_enemy.png" id="1_wyms0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sikrv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wyms0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DumbEnemy" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_sna6n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sikrv")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -35, 35, 35, 0, 8, -35, 35)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, 24)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
