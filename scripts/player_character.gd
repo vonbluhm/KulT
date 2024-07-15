@@ -12,6 +12,7 @@ var shot_cd = false
 signal player_shot_fired
 signal aim_activated
 signal strike_started
+signal player_downed
 
 var charging_up = false
 var charging_time = 0.0
@@ -21,7 +22,6 @@ var charging_time = 0.0
 var striking = false
 var strike_dir = Vector2.UP
 var strike_time = 0.0
-
 
 
 func _ready():
@@ -96,6 +96,7 @@ func shoot():
 
 
 func take_damage():
+	player_downed.emit()
 	queue_free()
 
 
