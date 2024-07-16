@@ -1,17 +1,25 @@
 extends Area2D
 
-# Called when the node enters the scene tree for the first time.
+@export var hp = 3
+#@export var speed = 200
+signal destroyed
+
+
 func _ready():
 	add_to_group("enemies")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	global_translate(\
-	Vector2(sin(global_rotation), -cos(global_rotation))* 100 * delta)
+func _process(_delta):
+	pass
 
 
-func take_damage():
+func take_damage(amount):
+	hp -= amount
+	if hp <= 0:
+		destroyed.emit()
+
+
+func _on_destroyed():
 	queue_free()
 
 
@@ -19,7 +27,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player") and not body.striking:
 		body.take_damage()
 	elif body.striking:
-		take_damage()
+		take_damage(10)
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

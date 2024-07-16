@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b76a3qrqh5bfi"]
+
+[ext_resource type="Script" path="res://scripts/enemy_wave.gd" id="1_y0ej1"]
+
+[sub_resource type="Curve2D" id="Curve2D_iqlx6"]
+bake_interval = 200.0
+_data = {
+"points": PackedVector2Array(-10, -10, 0, 0, 0, 0, 0, 0, 0, 0, -81, -275, 0, 0, 0, 0, -31, -554, 0, 0, 0, 0, 0, -592, 0, 0, 0, 0, 36, -537, 0, 0, 0, 0, 72, -216, 0, 0, 0, 0, -2, 158)
+}
+point_count = 7
+
+[node name="EnemyWave" type="Node2D"]
+script = ExtResource("1_y0ej1")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_iqlx6")
+
+[node name="TimerBetweenEnemies" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerBetweenEnemies" to="." method="_on_timer_between_enemies_timeout"]
