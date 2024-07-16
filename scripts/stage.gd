@@ -16,6 +16,8 @@ func _ready():
 	player.player_shot_fired.connect(_on_player_shot_fired)
 	player.player_downed.connect(_on_player_downed)
 	spawn_wave(0, 0, Vector2(400, -50), PI, 5, 2.0)
+	await get_tree().create_timer(3.0).timeout
+	spawn_wave(0, 0, Vector2(get_viewport().size.x-50, 400), -PI/2, 4, 1)
 
 
 func _process(_delta):
