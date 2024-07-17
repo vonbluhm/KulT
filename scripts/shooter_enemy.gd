@@ -12,7 +12,7 @@ func _ready():
 
 
 func _process(_delta):
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.8).timeout
 	if not fired:
 		shoot()
 

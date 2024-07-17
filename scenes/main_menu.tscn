@@ -36,6 +36,10 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+focus_next = NodePath("../ExitButton")
+focus_previous = NodePath("../ExitButton")
 text = "Start"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]

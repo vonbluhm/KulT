@@ -1,10 +1,11 @@
 extends Control
 
 var stage = preload("res://scenes/stage.tscn") as PackedScene
+@onready var start_button = $MarginContainer/VBoxContainer/Button
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	start_button.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

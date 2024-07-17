@@ -14,11 +14,11 @@ texture = ExtResource("2_jf0v1")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-24, -28, 33, -1, -25, 29, -9, 0)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-24, 0)
-
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(32, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-24, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="destroyed" from="." to="." method="_on_destroyed"]
