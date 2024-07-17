@@ -16,6 +16,12 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.131331, 0.128038, 0.218975, 1)
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=540
+window/size/viewport_height=810
+window/size/resizable=false
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -81,6 +87,8 @@ charge={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="player_bullets"
+2d_physics/layer_3="enemies"
+2d_physics/layer_4="enemy_bullets"
 
 [rendering]
 

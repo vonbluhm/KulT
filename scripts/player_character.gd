@@ -63,7 +63,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
-	var momentum_fadeout = 2 * delta
+	var momentum_fadeout = 3 * delta
 	direction = Vector2(\
 	Input.get_axis("move_left", "move_right"),\
 	Input.get_axis("move_up", "move_down"))

@@ -1,6 +1,9 @@
 extends Area2D
 
-@export var hp = 3
+@export var hp = 1
+@onready var muzzle = $Marker2D
+@onready var bullet_scene = preload("res://scenes/enemy_straight_bullet.tscn")
+var fired = false
 signal destroyed
 
 
@@ -9,7 +12,17 @@ func _ready():
 
 
 func _process(_delta):
-	pass
+	await get_tree().create_timer(0.5).timeout
+	if not fired:
+		shoot()
+
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	bullet.global_position = muzzle.global_position
+	bullet.global_rotation = global_rotation
+	get_tree().get_first_node_in_group("current_stage").enemy_BC.add_child(bullet)
+	fired = true
 
 
 func take_damage(amount):

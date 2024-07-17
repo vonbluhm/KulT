@@ -3,14 +3,22 @@ extends Node2D
 var enemy_scene: PackedScene
 @onready var number: int
 var enemies_spawned = 0
+var enemy_speed: int
 @onready var time_btw_enemies: float
 @onready var spawn = $SpawnPoints/Marker2D
 @onready var enemy_path = $Path2D
+var path_length: float
+var increment: float
 @onready var btw_timer = $TimerBetweenEnemies
 
 
 func _ready():
+	enemy_path.curve.set_point_position(1, \
+	Vector2(0, -1.15 * get_viewport_rect().size.y))
 	btw_timer.start(time_btw_enemies)
+	enemy_speed = 250
+	path_length = enemy_path.curve.get_baked_length()
+	increment = enemy_speed/path_length
 	spawn_enemy()
 
 
@@ -26,7 +34,8 @@ func _process(_delta):
 
 func _physics_process(delta):
 	for container in enemy_path.get_children():
-		container.progress_ratio += 0.3 * delta
+		container.progress_ratio += \
+		delta * increment
 
 
 func spawn_enemy():

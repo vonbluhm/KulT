@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce60lj5f37t8u"]
+
+[ext_resource type="Script" path="res://scripts/enemy_straight_bullet.gd" id="1_vw3xa"]
+[ext_resource type="Texture2D" uid="uid://2613trohdkc7" path="res://enemy_straight_bullet.png" id="1_wqxcl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k33or"]
+radius = 3.0
+
+[node name="EnemyStraightBullet" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_vw3xa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wqxcl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_k33or")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(0.4, 0.3)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

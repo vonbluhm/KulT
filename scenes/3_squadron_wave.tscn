@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://idrhoipuycri"]
+
+[ext_resource type="Script" path="res://scripts/3_squadron_wave.gd" id="1_nkt58"]
+
+[sub_resource type="Curve2D" id="Curve2D_mf16c"]
+bake_interval = 200.0
+_data = {
+"points": PackedVector2Array(-10, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0, -600)
+}
+point_count = 2
+
+[node name="3SquadronWave" type="Node2D"]
+script = ExtResource("1_nkt58")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_mf16c")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotation = -1.5708
+
+[node name="SpawnPoints" type="Node2D" parent="Path2D/PathFollow2D"]
+
+[node name="Marker2D" type="Marker2D" parent="Path2D/PathFollow2D/SpawnPoints"]
+
+[node name="Marker2D2" type="Marker2D" parent="Path2D/PathFollow2D/SpawnPoints"]
+position = Vector2(-60, -60)
+
+[node name="Marker2D3" type="Marker2D" parent="Path2D/PathFollow2D/SpawnPoints"]
+position = Vector2(-60, 60)
